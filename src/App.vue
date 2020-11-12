@@ -2,8 +2,12 @@
   <div id="app">
     <Header />
 
-    <router-view />
+    <main id="main">
 
+      <router-view />
+
+    </main>
+    
     <Footer />
 </template>
 
@@ -73,4 +77,14 @@ export default {
     transform: scale(1.1);
   }
 
+  #app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  #main {
+    flex: 1;
+  }
+  
 </style>
