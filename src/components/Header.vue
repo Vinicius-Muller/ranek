@@ -6,7 +6,7 @@
       
       <router-link to="/" class="logo">
       
-        <img src="" alt="Ranek">
+        <img src="@/assets/ranek.svg" alt="Ranek">
       
       </router-link>
 
@@ -25,6 +25,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+
 
 </style>

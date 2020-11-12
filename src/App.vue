@@ -23,24 +23,54 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+* {
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
-}
+  body, ul, li, h1, h2, p {
+    padding: 0px;
+    margin:0px
+  }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  ul {
+    list-style: none;
+  }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  body {
+    font-family: "Arial", Helvetica, sans-serif;
+    color: #345;
+    background: url("./assets/pattern.svg") repeat top;
+  }
+
+  a {
+    color:#345;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display:block
+  }
+
+  .btn {
+    display:block;
+    padding: 10px 30px;
+    background:#87f;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(30, 60, 90, 0.2);
+    transition: all 0.3s;
+    border: none;
+    font-family: "Arial", Helvetica, sans-serif;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background: #65d;
+    transform: scale(1.1);
+  }
+
 </style>
