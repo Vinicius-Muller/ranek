@@ -2,7 +2,7 @@
 
   <footer>
 
-    <h1>Ranek. Alguns direitos reservados.</h1>
+    <p>Ranek. Alguns direitos reservados.</p>
 
   </footer>
   

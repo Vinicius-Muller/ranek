@@ -1,5 +1,7 @@
 <template>
+
   <div id="app">
+
     <Header />
 
     <main id="main">
@@ -9,13 +11,16 @@
     </main>
     
     <Footer />
+
+  </div>
+  
 </template>
 
 <script>
 
-import Header from '@components/Header.vue'
+import Header from "@/components/Header.vue"
 
-import Footer from '@components/Footer.vue'
+import Footer from "@/components/Footer.vue"
 
 export default {
   components:{
@@ -86,5 +91,5 @@ export default {
   #main {
     flex: 1;
   }
-  
+
 </style>
