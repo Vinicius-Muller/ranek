@@ -1,7 +1,7 @@
 <template>
 
   <div class="home">
-    <h1> 🎁 Compre ou Venda 🚚 </h1>
+    <h1> 🎁  Compre ou Venda  🚚 </h1>
 
     <Searcher />
 
