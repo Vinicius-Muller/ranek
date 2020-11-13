@@ -12,9 +12,8 @@
 
 <script>
 
-import Searcher from "@/components/Seacher.vue";
-
 import ProductsList from "@/components/ProductsList.vue";
+
 import Searcher from '../components/Searcher.vue';
 
 
