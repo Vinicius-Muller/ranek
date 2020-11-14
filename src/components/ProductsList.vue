@@ -21,22 +21,43 @@
 
 import { api } from "@/services.js";
 
+import { serialize } from "@/helpers.js";
+
 export default {
   name: "ProductsList",
 
   data() {
     return {
-      products: []
+      products: [],
+      productsPerPage:9
+    }
+  },
+
+  computed: {
+    url(){
+
+      const query = serialize(this.$route.query);
+
+      return `/product?_limit=${this.productsPerPage}${query}`;
     }
   },
 
   methods: {
     getProducts() {
-      api.get("/product").then(response => {
+
+      api.get(this.url).then(response => {
         this.products = response.data
       })
+
     }
   },
+
+  watch: {
+    url() {
+      this.getProducts();
+    }
+  },
+
   created(){
     this.getProducts();
   }
