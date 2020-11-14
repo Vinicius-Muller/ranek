@@ -4,7 +4,6 @@
 
     <div v-for="product in products" :key="product.id">
 
-      
 
       <h2 class="title">{{product.name}}</h2>
 
