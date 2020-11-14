@@ -4,7 +4,7 @@
 
     <div v-for="product in products" :key="product.id">
 
-      <img :src="product.images[0].src" :alt="product.images[0].title">
+      
 
       <h2 class="title">{{product.name}}</h2>
 
@@ -19,6 +19,9 @@
 </template>
 
 <script>
+
+import { api } from "@/services.js";
+
 export default {
   name: "ProductsList",
 
@@ -30,10 +33,13 @@ export default {
 
   methods: {
     getProducts() {
-      fetch("http://localhost:3000/product").then(response => response.json()).then(response =>{
-        this.products = response;
+      api.get("/product").then(response => {
+        this.products = response.data
       })
     }
+  },
+  created(){
+    this.getProducts();
   }
 }
 </script>

@@ -14,7 +14,7 @@
 
 import ProductsList from "@/components/ProductsList.vue";
 
-import Searcher from '../components/Searcher.vue';
+import Searcher from "@/components/Searcher.vue";
 
 
 export default {
