@@ -92,4 +92,21 @@ export default {
     flex: 1;
   }
 
+  input, textarea {
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 15px;
+    transition:all 0.3s;
+    font-size: 1rem;
+    font-family: "Arial", Helvetica, sans-serif;
+    margin-bottom: 15px;
+  }
+
+  input:hover, textarea:hover,
+  input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 6px 12px rgba(30, 60, 90, 0.2);
+    border-color: #87f;
+  }
+
 </style>
