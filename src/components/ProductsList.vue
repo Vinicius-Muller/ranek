@@ -2,7 +2,7 @@
   
   <section class="products-container">
 
-    <div v-if="products && products.lenght > 0" class="products">
+    <div v-if="products && products.length > 0" class="products">
 
        <div class="product" v-for="product in products" :key="product.id">
 
@@ -20,11 +20,12 @@
 
     </div>
 
-    <div v-else-if="products && products.lenght === 0">
+    <div v-else-if="products && products.length === 0">
 
       <p class="no-results">Busca sem resultado. Procure por outro termo.</p>
 
     </div>
+
 
   </section>
 
