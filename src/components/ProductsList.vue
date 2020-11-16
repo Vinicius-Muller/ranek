@@ -2,32 +2,41 @@
   
   <section class="products-container">
 
-    <div v-if="products && products.length > 0" class="products">
+    <transition mode="out-in">
 
-       <div class="product" v-for="(product, index) in products" :key="index">
+      <div v-if="products && products.length > 0" class="products" key="products">
 
-        <router-link to="/">   
+        <div class="product" v-for="(product, index) in products" :key="index">
 
-          <h2 class="title">{{product.name}}</h2>
+          <router-link to="/">   
 
-           <p class="price">{{product.price}}</p>
+            <h2 class="title">{{product.name}}</h2>
 
-           <p>{{product.description}}</p>
+            <p class="price">{{product.price}}</p>
 
-        </router-link>
+            <p>{{product.description}}</p>
+
+          </router-link>
+
+        </div>
+
+        <ProductsPageing :totalProducts="totalProducts" :productsPerPage="productsPerPage" />
 
       </div>
 
-      <ProductsPageing :totalProducts="totalProducts" :productsPerPage="productsPerPage" />
+      <div v-else-if="products && products.length === []" key="no-results">
 
-    </div>
+        <p class="no-results">Busca sem resultado. Procure por outro termo.</p>
 
-    <div v-else-if="products && products.length === 0">
+      </div>
 
-      <p class="no-results">Busca sem resultado. Procure por outro termo.</p>
+      <div v-else key="loading">
 
-    </div>
+        <PageLoading />
 
+      </div>
+
+    </transition>
 
   </section>
 
@@ -67,7 +76,7 @@ export default {
 
   methods: {
     getProducts() {
-
+      this.products = [];
       api.get(this.url).then(response => {
         this.totalProducts = Number(response.headers["x-total-count"]);
         this.products = response.data;
