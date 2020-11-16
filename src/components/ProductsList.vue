@@ -4,7 +4,7 @@
 
     <div v-if="products && products.length > 0" class="products">
 
-       <div class="product" v-for="product in products" :key="product.id">
+       <div class="product" v-for="(product, index) in products" :key="index">
 
         <router-link to="/">   
 
@@ -17,6 +17,8 @@
         </router-link>
 
       </div>
+
+      <ProductsPageing :totalProducts="totalProducts" :productsPerPage="productsPerPage" />
 
     </div>
 
@@ -37,13 +39,20 @@ import { api } from "@/services.js";
 
 import { serialize } from "@/helpers.js";
 
+import ProductsPageing from "@/components/ProductsPageing.vue";
+
 export default {
   name: "ProductsList",
+
+  components: {
+    ProductsPageing
+  },
 
   data() {
     return {
       products: [],
-      productsPerPage:9
+      productsPerPage:9,
+      totalProducts:[]
     }
   },
 
@@ -60,7 +69,8 @@ export default {
     getProducts() {
 
       api.get(this.url).then(response => {
-        this.products = response.data
+        this.totalProducts = Number(response.headers["x-total-count"]);
+        this.products = response.data;
       })
 
     }
