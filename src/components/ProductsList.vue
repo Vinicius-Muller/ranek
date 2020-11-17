@@ -8,11 +8,11 @@
 
         <div class="product" v-for="(product, index) in products" :key="index">
 
-          <router-link to="/">   
+        <router-link :to="{ name: 'Product', params: {id: product.id } }">   
 
             <h2 class="title">{{product.name}}</h2>
 
-            <p class="price">{{product.price}}</p>
+            <p class="price">{{product.price | numberTranslation}}</p>
 
             <p>{{product.description}}</p>
 
