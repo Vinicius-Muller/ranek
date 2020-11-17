@@ -2,6 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
 import Product from "@/views/Product.vue"
+import Loguin from "@/views/Loguin.vue"
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,12 @@ const router = new VueRouter({
       path: '/product/:id',
       name: 'Product',
       component: Product,
+      props: true
+    },
+    {
+      path: '/loguin',
+      name: 'Loguin',
+      component: Loguin,
       props: true
     }
   ],

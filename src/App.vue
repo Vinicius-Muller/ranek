@@ -5,8 +5,12 @@
     <Header />
 
     <main id="main">
+      
+      <transition>
 
-      <router-view />
+        <router-view mode="out-in" />
+
+      </transition>
 
     </main>
     
@@ -90,6 +94,10 @@ export default {
 
   #main {
     flex: 1;
+  }
+
+  label {
+    margin-bottom: 5px;
   }
 
   input, textarea {
