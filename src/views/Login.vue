@@ -1,18 +1,18 @@
 <template>
 
-  <section class="loguin">
+  <section class="login">
 
-    <h1>Loguin</h1>
+    <h1>Login</h1>
 
     <form>
 
       <label for="email">Email</label>
 
-      <input type="email" name="email" id="email" v-model="loguin.email">
+      <input type="email" name="email" id="email" v-model="login.email">
 
       <label for="password">Email</label>
 
-      <input type="password" name="password" id="password" v-model="loguin.password">
+      <input type="password" name="password" id="password" v-model="login.password">
 
       <button class="btn" @click.prevent="log">Logar</button>
 
@@ -24,7 +24,7 @@
 
     </p>
 
-    <NewLoguin />
+    <NewLogin />
 
   </section>
   
@@ -32,20 +32,20 @@
 
 <script>
 
-import NewLoguin from "@/components/NewLoguin.vue";
+import NewLogin from "@/components/NewLogin.vue";
 
 export default {
-  name: "Loguin",
+  name: "Login",
   components: {
 
-    NewLoguin
+    NewLogin
 
   },
   
   data() {
     return {
 
-      loguin: {
+      login: {
 
         email: "",
         senha: ""
@@ -58,7 +58,8 @@ export default {
   methods: {
 
     log() {
-
+      this.$store.dispatch("getUsers", this.login.email)
+      this.$router.push({name: "User"});
     }
 
   }
@@ -68,7 +69,7 @@ export default {
 
 <style scoped>
 
-.loguin {
+.login {
   max-width: 500px;
   margin:0 auto;
   padding: 0 20px;

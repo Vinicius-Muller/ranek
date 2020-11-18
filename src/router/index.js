@@ -2,7 +2,8 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import Home from "../views/Home.vue"
 import Product from "@/views/Product.vue"
-import Loguin from "@/views/Loguin.vue"
+import Login from "@/views/Login.vue"
+import User from "@/views/user/User.vue"
 
 Vue.use(VueRouter)
 
@@ -24,10 +25,14 @@ const router = new VueRouter({
       props: true
     },
     {
-      path: '/loguin',
-      name: 'Loguin',
-      component: Loguin,
-      props: true
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User
     }
   ],
 
