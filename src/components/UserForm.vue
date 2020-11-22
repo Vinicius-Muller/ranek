@@ -11,7 +11,7 @@
     <input id="password" name="password" type="password" v-model="password">
 
     <label for="cep">Cep</label>
-    <input id="cep" name="cep" type="text" v-model="cep">
+    <input id="cep" name="cep" type="text" v-model="cep" @keydown="fillCep">
 
     <label for="number">Numero</label>
     <input id="number" name="number" type="number" v-model="number">
@@ -34,7 +34,8 @@
 
 <script>
 
-import { mapFields } from "@/helpers.js"
+import { mapFields } from "@/helpers.js";
+import  { getCep } from "@/services.js"
 
 export default {
   name: "UserForm",
@@ -44,6 +45,18 @@ export default {
       base: "user",
       mutation: "UPDATE_USER"
     }),
+  },
+  methods: {
+    fillCep() {
+      const cep = this.cep.replace(/\D/g, "");
+      if(cep.length === 8) {
+        getCep(cep).then(response => {
+          this.street = response.data.logradouro;
+          this.state = response.data.uf;
+          this.city = response.data.localidade;
+        })
+      }
+    }
   }
 }
 </script>
