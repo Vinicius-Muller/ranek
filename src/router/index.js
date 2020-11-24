@@ -4,6 +4,10 @@ import Home from "../views/Home.vue"
 import Product from "@/views/Product.vue"
 import Login from "@/views/Login.vue"
 import User from "@/views/user/User.vue"
+import UserProducts from "@/views/user/UserProducts.vue"
+import UserEdits from "@/views/user/UserEdits.vue"
+import UserSells from "@/views/user/UserSells.vue"
+import UserBuys from "@/views/user/UserBuys.vue"
 
 Vue.use(VueRouter)
 
@@ -32,7 +36,29 @@ const router = new VueRouter({
     {
       path: '/user',
       name: 'User',
-      component: User
+      component: User,
+      children: [
+        {
+          path: '',
+          name: 'UserProducts',
+          component: UserProducts
+        },
+        {
+          path: 'edits',
+          name: 'UserEdits',
+          component: UserEdits
+        },
+        {
+          path: 'sells',
+          name: 'UserSells',
+          component: UserSells
+        },
+        {
+          path: 'buys',
+          name: 'UserBuys',
+          component: UserBuys
+        }
+      ]
     }
   ],
 

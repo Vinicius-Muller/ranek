@@ -10,6 +10,10 @@ export const api = {
 
   get(endpoint) {
     return instance.get(endpoint)
+  },
+
+  post(endpoint, body) {
+    return instance.post(endpoint, body)
   }
 
 };

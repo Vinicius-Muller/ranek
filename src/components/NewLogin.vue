@@ -10,7 +10,7 @@
 
     <UserForm v-else>
 
-      <button class="btn btn-form">Criar Usuario</button>
+      <button class="btn btn-form" @click.prevent="createUsers">Criar Usuario</button>
 
     </UserForm>
 
@@ -32,6 +32,19 @@ export default {
   data() {
     return {
       create: false
+    }
+  },
+
+  methods: {
+    async createUsers() {
+      try {
+     await this.$store.dispatch("createUsers", this.$store.state.user)
+     await this.$store.dispatch("getUsers", this.$store.state.user.email)
+     this.$router.push({name: "user"})
+      }
+      catch(error) {
+        console.log(error)
+      }
     }
   }
 

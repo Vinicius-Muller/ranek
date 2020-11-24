@@ -30,10 +30,30 @@ export default new Vuex.Store({
   },
   actions: {
     getUsers(context, payload) {
-      api.get(`/user/${payload}`).then(response => {
+    return api.get(`/user/${payload}`).then(response => {
         context.commit("UPDATE_USER", response.data)
         context.commit("UPDATE_LOGIN", true)
       })
+    },
+    createUsers(context, payload) {
+    context.commit("UPDATE_USER", {id: payload.email})
+    return api.post("/user", payload)
+    },
+    logOutUser(context) {
+      context.commit("UPDATE_USER", 
+      {
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+        street: "",
+        cep: "",
+        number:"",
+        state: "",
+        city: ""
+      }
+      )
+    context.commit("UPDATE_LOGIN", false)
     }
   },
   modules: {

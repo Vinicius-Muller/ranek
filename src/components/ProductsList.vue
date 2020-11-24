@@ -7,25 +7,18 @@
       <div v-if="products && products.length > 0" class="products" key="products">
 
         <div class="product" v-for="(product, index) in products" :key="index">
-
         <router-link :to="{ name: 'Product', params: {id: product.id } }">   
-
             <h2 class="title">{{product.name}}</h2>
-
             <p class="price">{{product.price | numberTranslation}}</p>
-
             <p>{{product.description}}</p>
-
           </router-link>
-
         </div>
-
         <ProductsPageing :totalProducts="totalProducts" :productsPerPage="productsPerPage" />
 
       </div>
 
       <div v-else-if="products && products.length === []" key="no-results">
-
+        
         <p class="no-results">Busca sem resultado. Procure por outro termo.</p>
 
       </div>
