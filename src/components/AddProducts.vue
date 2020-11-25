@@ -1,10 +1,10 @@
 <template>
-  <p>vendas</p>
+  <p>Add Products</p>
 </template>
 
 <script>
 export default {
-  name: "UserSells"
+  name: "AddProducts"
 }
 </script>
 

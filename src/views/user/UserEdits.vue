@@ -1,5 +1,5 @@
 <template>
-  <div>editar</div>
+  <p>editar</p>
 </template>
 
 <script>

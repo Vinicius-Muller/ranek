@@ -5,7 +5,7 @@
       <ul>
         <li><router-link :to="{name: 'UserProducts'}">Produtos</router-link></li>
         <li><router-link :to="{name: 'UserBuys'}">Compras</router-link></li>
-        <li><router-link :to="{name: 'UerSells'}">Vendas</router-link></li>
+        <li><router-link :to="{name: 'UserSells'}">Vendas</router-link></li>
         <li><router-link :to="{name: 'UserEdits'}">Editar Usuario</router-link></li>
         <li><button @click.prevent="logOut">deslogar</button></li>
       </ul>
