@@ -11,6 +11,8 @@
 
         <ItemProducts :product="product">
           <p>{{product.description}}</p>
+
+          <button class="delete" @click="deleteProducts(product.id, product.name)">Deletar</button>
         </ItemProducts>
 
       </li>
@@ -24,6 +26,7 @@
 import AddProducts from "@/components/AddProducts.vue"
 import ItemProducts from "@/components/ItemProducts.vue"
 import { mapState, mapActions } from "vuex"
+import { api } from "@/services.js"
 
 export default {
   name: "UserProducts",
@@ -37,7 +40,19 @@ export default {
   },
 
   methods: {
-    ...mapActions(["getProducts"])
+    ...mapActions(["getProducts"]),
+    
+    deleteProducts(id, name) {
+      const confirm = window.confirm(`Deseja deletar esse produto  ${name}?`)
+
+      if(confirm) {
+        api.delete(`/product/${id}`).then(() => {
+        this.getProducts()
+      }).catch(error => {
+        console.log(error)
+      })
+      }
+    }
   },
 
   watch: {
@@ -69,6 +84,19 @@ h2 {
 .list-enter-active,
 .list-leave-active {
   transition: all 0.3s;
+}
+
+.delete {
+  position:absolute;
+  top:0px;
+  right:0px;
+  background: url("../../assets/remove.svg")no-repeat center center;
+  width:24px;
+  height:24px;
+  text-indent: -140px;
+  overflow:hidden;
+  cursor: pointer;
+  border:none;
 }
 
 </style>

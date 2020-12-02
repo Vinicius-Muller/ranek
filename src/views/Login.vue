@@ -59,7 +59,7 @@ export default {
 
     log() {
       this.$store.dispatch("getUsers", this.login.email)
-      this.$router.push({name: "User"});
+      this.$router.push("/user/");
     }
 
   }
