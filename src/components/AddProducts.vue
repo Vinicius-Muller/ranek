@@ -30,7 +30,8 @@ export default {
         name: "",
         price: "",
         description: "",
-        images: []
+        images: [],
+        soldOut: "false"
       }
     }
   },

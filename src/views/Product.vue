@@ -15,17 +15,18 @@
       </ul>
 
       <div class="info">
-
         <h1>{{product.name}}</h1>
 
         <p class="price">{{product.price | numberTranslation}}</p>
 
         <p class="description">{{product.description}}</p>
 
-        <button v-if="product.sell === 'false' " class="btn">Comprar</button>
+        <transition mode="out-in" v-if="product.sell === 'false' ">
+          <button v-if="!finishing" class="btn" @click="finishing = true">Comprar</button>
+          <FinishingSell v-else :product="product"/>
+        </transition>
 
         <button v-else class="btn" disabled>Sem estoque</button>
-
       </div>
 
     </div>
@@ -43,14 +44,19 @@
 <script>
 
 import { api } from "@/services.js";
+import FinishingSell from "@/components/FinishingSell.vue";
 
 export default {
   name: "Product",
   props: ["id"],
+  components: {
+    FinishingSell
+  },
 
   data() {
     return {
-      product: []
+      product: [],
+      finishing: false
     }
   },
 
