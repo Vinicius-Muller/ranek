@@ -4,24 +4,18 @@
 
     <div v-if="product" class="product">
 
-      <ul v-if="product.images" class="images">
+      <ul v-if="product.img" class="images">
 
-        <li v-for="(image, index) in product.images" :key="index">
-
-          <img :src="image.src" :alt="image.title">
-
-        </li>
+          <img :src="require(`@/assets/${product.img}`)" :alt="product.nome">
 
       </ul>
 
       <div class="info">
-        <h1>{{product.name}}</h1>
+        <h1>{{product.nome}}</h1>
 
-        <p class="price">{{product.price | numberTranslation}}</p>
+        <p class="price">{{product.preco | numberTranslation}}</p>
 
-        <p class="description">{{product.description}}</p>
-
-        <transition mode="out-in" v-if="product.sell === 'false' ">
+        <transition mode="out-in" v-if="product">
           <button v-if="!finishing" class="btn" @click="finishing = true">Comprar</button>
           <FinishingSell v-else :product="product"/>
         </transition>
@@ -36,14 +30,11 @@
       <PageLoading />
 
     </div>
-
   </section>
 
 </template>
 
 <script>
-
-import { api } from "@/services.js";
 import FinishingSell from "@/components/FinishingSell.vue";
 
 export default {
@@ -59,21 +50,16 @@ export default {
       finishing: false
     }
   },
-
   methods: {
-
-    getProduct() {
-      api.get(`/Product/${this.id}`).then(response => {
-        this.product = response.data
-      })
+    getProducts() {
+      this.product = this.$route.params.id
     }
-
   },
-
   created() {
-    this.getProduct();
+    this.getProducts()
   }
 }
+
 </script>
 
 <style scoped>

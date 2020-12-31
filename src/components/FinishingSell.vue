@@ -2,7 +2,7 @@
   <section>
     <h2>Endereço de Envio</h2>
     <UserForm>
-      <button class="btn" @click.prevent="handleFinishing">Finalizar Compra</button>
+      <button class="btn" @click.prevent="handleFinishing()">Finalizar Compra</button>
     </UserForm>
 
   </section>
@@ -11,7 +11,6 @@
 <script>
 
 import UserForm from "@/components/UserForm.vue";
-import { api } from "@/services.js";
 import { mapState } from "vuex";
 
 
@@ -40,9 +39,9 @@ export default {
   },
   methods: {
     handleSell() {
-     return api.post("/trasation", this.buy).then(() => {
+      this.buy.push(this.$store.state.transation)
         this.$router.push({name: "UserBuys"})
-      })
+     }
     },
     async createNewUser() {
        try {
@@ -60,9 +59,7 @@ export default {
         } else {
           this.createNewUser()
         }
-      }
-    }
-      
+  }
 }
 </script>
 

@@ -7,13 +7,13 @@
       <div v-if="products && products.length > 0" class="products" key="products">
 
         <div class="product" v-for="(product, index) in products" :key="index">
-        <router-link :to="{ name: 'Product', params: {id: product.id } }">   
-            <h2 class="title">{{product.name}}</h2>
-            <p class="price">{{product.price | numberTranslation}}</p>
-            <p>{{product.description}}</p>
+        <router-link :to="{ name: 'Product', params: {id: product } }">  
+          <img :src="require(`@/assets/${product.img}`)" :alt="product.nome"> 
+            <h2 class="title">{{product.nome}}</h2>
+            <p class="price">{{product.preco | numberTranslation}}</p>
           </router-link>
         </div>
-        <ProductsPageing :totalProducts="totalProducts" :productsPerPage="productsPerPage" />
+        <ProductsPageing />
 
       </div>
 
@@ -36,12 +36,8 @@
 </template>
 
 <script>
-
-import { api } from "@/services.js";
-
-import { serialize } from "@/helpers.js";
-
 import ProductsPageing from "@/components/ProductsPageing.vue";
+import { mapState } from 'vuex';
 
 export default {
   name: "ProductsList",
@@ -52,41 +48,15 @@ export default {
 
   data() {
     return {
-      products: [],
       productsPerPage:9,
       totalProducts:[]
     }
   },
 
   computed: {
-    url(){
-
-      const query = serialize(this.$route.query);
-
-      return `/product?_limit=${this.productsPerPage}${query}`;
-    }
-  },
-
-  methods: {
-    getProducts() {
-      this.products = [];
-      api.get(this.url).then(response => {
-        this.totalProducts = Number(response.headers["x-total-count"]);
-        this.products = response.data;
-      })
-
-    }
-  },
-
-  watch: {
-    url() {
-      this.getProducts();
-    }
-  },
-
-  created(){
-    this.getProducts();
+      ...mapState(['products'])
   }
+
 }
 </script>
 
