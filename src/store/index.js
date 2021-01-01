@@ -1,6 +1,5 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import { api } from "@/services.js"
 
 Vue.use(Vuex)
 
@@ -103,9 +102,7 @@ export default new Vuex.Store({
     context.commit("UPDATE_LOGIN", false)
     },
     getProducts(context) {
-      api.get(`/product?user_id=${context.state.user.id}`).then(response => {
-        context.commit("UPDATE_PRODUCTS", response.data)
-      })
+       return context.products
     },
     pushTransation(context, payload) {
       context.commit('PUSH_TRANSATION', payload)

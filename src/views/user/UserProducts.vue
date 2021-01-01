@@ -26,7 +26,6 @@
 import AddProducts from "@/components/AddProducts.vue"
 import ItemProducts from "@/components/ItemProducts.vue"
 import { mapState, mapActions } from "vuex"
-import { api } from "@/services.js"
 
 export default {
   name: "UserProducts",
@@ -46,11 +45,7 @@ export default {
       const confirm = window.confirm(`Deseja deletar esse produto  ${name}?`)
 
       if(confirm) {
-        api.delete(`/product/${id}`).then(() => {
-        this.getProducts()
-      }).catch(error => {
-        console.log(error)
-      })
+        this.products.splice(id)
       }
     }
   },
