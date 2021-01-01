@@ -7,7 +7,7 @@
     <h2>Lista de Produtos</h2>
     
     <transition-group v-if="products" name="list" tag="ul">
-
+      {{this.$store.state.newProducts}}
           <button class="delete" @click="deleteProducts(product.id, product.name)">Deletar</button>
 
     </transition-group>

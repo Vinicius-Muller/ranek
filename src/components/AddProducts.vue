@@ -13,7 +13,7 @@
     <label for="description">Descrição</label>
     <textarea id="description" name="description" v-model="product.description"></textarea>
 
-    <input class="btn" type="button" value="Adicionar Produto" @click.prevent="addProduct">
+    <input class="btn" type="button" value="Adicionar Produto" @click.prevent="registerProducts()">
 
   </form>
 </template>
@@ -36,6 +36,11 @@ export default {
     }
   },
   methods: {
+
+    handleNewProduct() {
+      this.$store.dispatch("registerProducts", this.product)
+    },
+
     formatProducts() {
       this.product.user_id = this.$store.state.user_id
     },

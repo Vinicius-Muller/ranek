@@ -54,7 +54,8 @@ export default new Vuex.Store({
       }
     ],
 
-    transation: []
+    transation: [],
+    newProducts:[]
 
   },
   mutations: {
@@ -73,6 +74,9 @@ export default new Vuex.Store({
     },
     PUSH_TRANSATION(state, payload) {
       state.transation.push(payload)
+    },
+    REGISTER_PRODUCTS(state, payload) {
+      state.newProducts.push(payload)
     }
   },
   actions: {
@@ -106,6 +110,9 @@ export default new Vuex.Store({
     },
     pushTransation(context, payload) {
       context.commit('PUSH_TRANSATION', payload)
+    },
+    registerProducts(context, payload) {
+      context.commit('REGISTER_PRODUCTS', payload)
     }
   },
   modules: {
