@@ -7,15 +7,9 @@
     <h2>Lista de Produtos</h2>
     
     <transition-group v-if="products" name="list" tag="ul">
-      <li v-for="(product, index) in products" :key="index">
-
-        <ItemProducts :product="product">
-          <p>{{product.description}}</p>
 
           <button class="delete" @click="deleteProducts(product.id, product.name)">Deletar</button>
-        </ItemProducts>
 
-      </li>
     </transition-group>
 
   </section>
@@ -24,14 +18,12 @@
 <script>
 
 import AddProducts from "@/components/AddProducts.vue"
-import ItemProducts from "@/components/ItemProducts.vue"
 import { mapState, mapActions } from "vuex"
 
 export default {
   name: "UserProducts",
   components: {
     AddProducts,
-    ItemProducts
   },
 
   computed: {

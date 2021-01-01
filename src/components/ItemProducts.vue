@@ -9,6 +9,7 @@
     </div>
       </router-link>
     <img :src="require(`@/assets/${product.img}`)" :alt="product.name">
+    <slot></slot>
   </div>
 </template>
 
