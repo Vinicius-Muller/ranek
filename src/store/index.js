@@ -84,7 +84,6 @@ export default new Vuex.Store({
       this.user = payload
         context.commit("UPDATE_USER", payload)
         context.commit("UPDATE_LOGIN", true)
-      
     },
     createUsers(context, payload) {
     context.commit("UPDATE_USER", {id: payload.email})

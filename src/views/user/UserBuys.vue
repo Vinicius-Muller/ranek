@@ -30,7 +30,6 @@ computed: {
 methods: {
   getBuys() {
     this.buys = this.transation
-    console.log(this.buys)
   }
 },
 watch: {

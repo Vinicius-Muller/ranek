@@ -2,55 +2,43 @@
   <form class="add-products">
 
     <label for="name">Nome</label>
-    <input id="name" name="name" type="text" v-model="product.name">
+    <input id="name" name="name" type="text" v-model="name">
 
     <label for="price">Preço (R$)</label>
-    <input id="price" name="price" type="number" v-model="product.price">
+    <input id="price" name="price" type="number" v-model="price">
 
     <label for="images">Fotos</label>
     <input id="images" name="images" type="file" ref="images">
 
     <label for="description">Descrição</label>
-    <textarea id="description" name="description" v-model="product.description"></textarea>
+    <textarea id="description" name="description" v-model="description"></textarea>
 
-    <input class="btn" type="button" value="Adicionar Produto" @click.prevent="registerProducts()">
+    <input class="btn" type="button" value="Adicionar Produto" @click.prevent="handleNewProduct({name,price,description})">
 
   </form>
 </template>
 
 <script>
 
-import {api} from "@/services.js"
-
 export default {
   name: "AddProducts",
   data() {
     return {
-      product: {
         name: "",
         price: "",
         description: "",
-        images: [],
         soldOut: "false"
-      }
     }
   },
   methods: {
 
-    handleNewProduct() {
-      this.$store.dispatch("registerProducts", this.product)
+    handleNewProduct(name,price,description) {
+      this.$store.dispatch("registerProducts", name,price,description)
     },
 
     formatProducts() {
       this.product.user_id = this.$store.state.user_id
     },
-
-    addProduct() {
-      this.formatProducts();
-    api.post("/product", this.product).then(()=>{
-      this.$store.dispatch("getProducts")
-    })
-    }
   }
 }
 </script>

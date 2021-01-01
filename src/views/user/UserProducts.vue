@@ -5,10 +5,11 @@
     <AddProducts />
 
     <h2>Lista de Produtos</h2>
-    
+    {{newProducts}}
     <transition-group v-if="products" name="list" tag="ul">
-      {{this.$store.state.newProducts}}
+        
           <button class="delete" @click="deleteProducts(product.id, product.name)">Deletar</button>
+      
 
     </transition-group>
 
@@ -17,17 +18,17 @@
 
 <script>
 
-import AddProducts from "@/components/AddProducts.vue"
+import AddProducts from "@/components/AddProducts.vue";
 import { mapState, mapActions } from "vuex"
 
 export default {
   name: "UserProducts",
   components: {
-    AddProducts,
+    AddProducts
   },
 
   computed: {
-    ...mapState(["login", "user", "products"])
+    ...mapState(["login", "user", "products", "newProducts"])
   },
 
   methods: {
