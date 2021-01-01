@@ -19,6 +19,7 @@ export default new Vuex.Store({
       state: "",
       city: ""
     },
+    users: [],
 
     
     products: [
@@ -54,7 +55,7 @@ export default new Vuex.Store({
       }
     ],
 
-    trasation: [
+    transation: [
       {
         buyerId: "viniciusmul98@gmail.com",
         sellerId: "viniciusmul98@gmail.com",
@@ -232,6 +233,7 @@ export default new Vuex.Store({
     },
     UPDATE_USER(state, payload) {
       state.user = Object.assign(state.user, payload)
+      state.users.push(payload)
     },
     UPDATE_PRODUCTS(state, payload) {
       state.products = payload
@@ -249,7 +251,6 @@ export default new Vuex.Store({
     },
     createUsers(context, payload) {
     context.commit("UPDATE_USER", {id: payload.email})
-    return api.post("/user", payload)
     },
     logOutUser(context) {
       context.commit("UPDATE_USER", 

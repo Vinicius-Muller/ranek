@@ -14,7 +14,6 @@
 <script>
 
 import ItemProducts from "@/components/ItemProducts.vue";
-import { api } from "@/services.js";
 import { mapState } from "vuex";
 
 export default {
@@ -28,13 +27,12 @@ data() {
   }
 },
 computed: {
-  ...mapState(["user", "login"])
+  ...mapState(["user", "login", "transation"])
 },
 methods: {
   getBuys() {
-    api.get(`/trasation?BuyerId=${this.user.id}`).then(response => {
-      this.buys = response.data
-    })
+    this.buys = this.transation[this.user]
+    console.log(this.buys)
   }
 },
 watch: {

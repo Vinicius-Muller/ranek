@@ -3,13 +3,13 @@
   <form>
     <div class="user" v-if="showLoginData">
       <label for="name">Nome</label>
-      <input id="name" name="name" type="text" v-model="name">
+      <input id="name" name="name" type="text" v-model="name" autocomplete="user-name">
 
       <label for="email">Email</label>
-      <input id="email" name="email" type="email" v-model="email">
+      <input id="email" name="email" type="email" v-model="email" autocomplete="user-name">
 
       <label for="password">Senha</label>
-      <input id="password" name="password" type="password" v-model="password">
+      <input id="password" name="password" type="password" v-model="password" autocomplete="current-password">
     </div>
     
     <label for="cep">Cep</label>

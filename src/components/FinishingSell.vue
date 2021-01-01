@@ -2,7 +2,7 @@
   <section>
     <h2>Endereço de Envio</h2>
     <UserForm>
-      <button class="btn" @click.prevent="handleFinishing()">Finalizar Compra</button>
+      <button class="btn" @click.prevent="handleFinishing">Finalizar Compra</button>
     </UserForm>
 
   </section>
@@ -21,9 +21,9 @@ export default {
     UserForm
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "transation"]),
     buy() {
-      return {
+      return [{
         buyerId: this.user.email,
         sellerId: this.product.user_id,
         product: this.product,
@@ -34,15 +34,15 @@ export default {
           state: this.user.state,
           city: this.user.city
         }
-      }
+      }]
     }
   },
   methods: {
     handleSell() {
-      this.buy.push(this.$store.state.transation)
-        this.$router.push({name: "UserBuys"})
-     }
-    },
+      this.buy.push(this.transation)
+      this.$router.push({name: "UserBuys"})
+     },
+    
     async createNewUser() {
        try {
      await this.$store.dispatch("createUsers", this.$store.state.user)
@@ -59,6 +59,7 @@ export default {
         } else {
           this.createNewUser()
         }
+  }
   }
 }
 </script>
