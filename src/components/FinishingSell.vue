@@ -23,7 +23,7 @@ export default {
   computed: {
     ...mapState(["user", "transation"]),
     buy() {
-      return [{
+      return {
         buyerId: this.user.email,
         sellerId: this.product.user_id,
         product: this.product,
@@ -34,12 +34,12 @@ export default {
           state: this.user.state,
           city: this.user.city
         }
-      }]
+      }
     }
   },
   methods: {
     handleSell() {
-      this.buy.push(this.transation)
+      this.$store.dispatch("pushTransation", this.buy)
       this.$router.push({name: "UserBuys"})
      },
     

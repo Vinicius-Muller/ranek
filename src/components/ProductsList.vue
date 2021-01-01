@@ -8,9 +8,9 @@
 
         <div class="product" v-for="(product, index) in products" :key="index">
         <router-link :to="{ name: 'Product', params: {id: product } }">  
-          <img :src="require(`@/assets/${product.img}`)" :alt="product.nome"> 
-            <h2 class="title">{{product.nome}}</h2>
-            <p class="price">{{product.preco | numberTranslation}}</p>
+          <img :src="require(`@/assets/${product.img}`)" :alt="product.name"> 
+            <h2 class="title">{{product.name}}</h2>
+            <p class="price">{{product.price | numberTranslation}}</p>
           </router-link>
         </div>
         <ProductsPageing />

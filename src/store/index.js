@@ -25,206 +25,37 @@ export default new Vuex.Store({
     products: [
       {
         id: "notebook",
-        nome: "Notebook",
-        preco: 2999,
+        name: "Notebook",
+        price: 2999,
         img: "notebook.jpg"
       },
       {
         id: "smartphone",
-        nome: "Smartphone",
-        preco: 1299,
+        name: "Smartphone",
+        price: 1299,
         img: "smartphone.jpg"
       },
       {
         id: "tablet",
-        nome: "Tablet",
-        preco: 899,
+        name: "Tablet",
+        price: 899,
         img: "tablet.jpg"
       },
       {
         id: "smartwatch",
-        nome: "Smartwatch",
-        preco: 1199,
+        name: "Smartwatch",
+        price: 1199,
         img: "smartwatch.jpg"
       },
       {
         id: "speaker",
-        nome: "Speaker",
-        preco: 599,
+        name: "Speaker",
+        price: 599,
         img: "speaker.jpg"
       }
     ],
 
-    transation: [
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Smartphone",
-          name: "Smartphone",
-          user_id: "viniciusmul98@gmail.com",
-          price: "1999",
-          sell: "false",
-          description: "Esse é um novo smartphone",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 1
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Tablet",
-          name: "Tablet",
-          user_id: "viniciusmul98@gmail.com",
-          price: "2999",
-          sell: "false",
-          description: "Esse é um novo tablet",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 2
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Tablet",
-          name: "Tablet",
-          user_id: "viniciusmul98@gmail.com",
-          price: "2999",
-          sell: "false",
-          description: "Esse é um novo tablet",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 3
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Notebook",
-          name: "Notebook",
-          user_id: "viniciusmul98@gmail.com",
-          price: "4999",
-          sell: "false",
-          description: "Esse é um novo notebook",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 4
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Smartphone",
-          name: "Smartphone",
-          user_id: "viniciusmul98@gmail.com",
-          price: "1999",
-          sell: "false",
-          description: "Esse é um novo smartphone",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 5
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Tablet",
-          name: "Tablet",
-          user_id: "viniciusmul98@gmail.com",
-          price: "2999",
-          sell: "false",
-          description: "Esse é um novo tablet",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 6
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Smartphone",
-          name: "Smartphone",
-          user_id: "viniciusmul98@gmail.com",
-          price: "1999",
-          sell: "false",
-          description: "Esse é um novo smartphone",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 7
-      },
-      {
-        buyerId: "viniciusmul98@gmail.com",
-        sellerId: "viniciusmul98@gmail.com",
-        product: {
-          id: "Tablet",
-          name: "Tablet",
-          user_id: "viniciusmul98@gmail.com",
-          price: "2999",
-          sell: "false",
-          description: "Esse é um novo tablet",
-          images: []
-        },
-        addres: {
-          street: "Street Unknown place",
-          cep: "12345678",
-          number: "26",
-          state: "RS",
-          city: "Campo Bom"
-        },
-        id: 8
-      }
-    ]
+    transation: []
 
   },
   mutations: {
@@ -240,6 +71,9 @@ export default new Vuex.Store({
     },
     ADD_PRODUCTS(state, payload) {
       state.products.unshift(payload)
+    },
+    PUSH_TRANSATION(state, payload) {
+      state.transation.push(payload)
     }
   },
   actions: {
@@ -272,6 +106,9 @@ export default new Vuex.Store({
       api.get(`/product?user_id=${context.state.user.id}`).then(response => {
         context.commit("UPDATE_PRODUCTS", response.data)
       })
+    },
+    pushTransation(context, payload) {
+      context.commit('PUSH_TRANSATION', payload)
     }
   },
   modules: {

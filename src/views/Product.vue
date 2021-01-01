@@ -6,14 +6,14 @@
 
       <ul v-if="product.img" class="images">
 
-          <img :src="require(`@/assets/${product.img}`)" :alt="product.nome">
+          <img :src="require(`@/assets/${product.img}`)" :alt="product.name">
 
       </ul>
 
       <div class="info">
-        <h1>{{product.nome}}</h1>
+        <h1>{{product.name}}</h1>
 
-        <p class="price">{{product.preco | numberTranslation}}</p>
+        <p class="price">{{product.price | numberTranslation}}</p>
 
         <transition mode="out-in" v-if="product">
           <button v-if="!finishing" class="btn" @click="finishing = true">Comprar</button>

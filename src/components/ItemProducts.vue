@@ -1,16 +1,14 @@
 <template>
   <div class="wrapper" v-if="product">
+    <div>
     <router-link :to="{name: 'Product', params: {id: product.id}}">Ver Produto</router-link>
-
-    <p>{{product.price}}</p>
-
     <div class="info">
       <p class="price">{{product.price | numberTranslation}}</p>
 
-      <h2 class="title">{{product.title}}</h2>
-
-      <slot></slot>
+      <h2 class="title">{{product.name}}</h2>
     </div>
+    </div>
+    <img :src="require(`@/assets/${product.img}`)" :alt="product.name">
   </div>
 </template>
 

@@ -3,9 +3,7 @@
   <div v-if="buys">
     <h2>Compras</h2>
     <div class="product-wrapper" v-for="(buy, index) in buys" :key="index">
-      <ItemProducts v-if="buy.product" :product="buy.product">
-        <p class="seller"><span>Vendedor:</span>{{buy.sellerId}}</p>
-      </ItemProducts>
+      <ItemProducts v-if="buy.product" :product="buy.product"/>
     </div>
   </div>
 </section>
@@ -31,7 +29,7 @@ computed: {
 },
 methods: {
   getBuys() {
-    this.buys = this.transation[this.user]
+    this.buys = this.transation
     console.log(this.buys)
   }
 },
