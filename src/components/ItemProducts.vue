@@ -1,13 +1,10 @@
 <template>
   <div class="wrapper" v-if="product">
-    <router-link :to="{name: 'Product', params: {id: product.id}}">
-      Ver Produto
       <div class="info">
       <p class="price">{{product.price | numberTranslation}}</p>
 
       <h2 class="title">{{product.name}}</h2>
     </div>
-      </router-link>
     <img :src="require(`@/assets/${product.img}`)" :alt="product.name">
     <slot></slot>
   </div>
@@ -47,7 +44,7 @@ a {
   width: 40vw;
   display:flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   font-weight: bold;
 }
 
@@ -56,4 +53,10 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
+@media screen and (max-width:380px) {
+  .wrapper img {
+    width:50vw;
+  }
+}
 </style>

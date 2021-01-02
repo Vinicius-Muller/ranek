@@ -89,4 +89,14 @@ export default {
   width: 200px;
 }
 
+
+@media screen and (max-width:380px) {
+  .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
 </style>

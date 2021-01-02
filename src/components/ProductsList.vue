@@ -108,5 +108,15 @@ export default {
 .no-results {
   text-align: center;
 }
+@media screen and (max-width:380px) {
+  .products {
+    display:flex;
+    flex-direction:column;
+  }
+
+  .product {
+    text-align: center;
+  }
+}
 
 </style>

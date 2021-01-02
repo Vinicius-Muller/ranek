@@ -27,4 +27,9 @@ footer {
   top: 75px;
 }
 
+@media screen and (max-width:380px) {
+  footer {
+    top:0px;
+  }
+}
 </style>
