@@ -3,8 +3,6 @@
   <div class="home">
     <h1> 🎁  Compre ou Venda  🚚 </h1>
 
-    <Searcher />
-
     <ProductsList />
   </div>
 
@@ -13,14 +11,9 @@
 <script>
 
 import ProductsList from "@/components/ProductsList.vue";
-
-import Searcher from "@/components/Searcher.vue";
-
-
 export default {
   name: 'Home',
   components:{
-    Searcher,
     ProductsList
   }
 }
