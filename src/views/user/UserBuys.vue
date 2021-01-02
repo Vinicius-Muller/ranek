@@ -6,6 +6,7 @@
       <ItemProducts v-if="buy.product" :product="buy.product"/>
     </div>
   </div>
+  <h2 v-else>Você ainda não comprou nada.</h2>
 </section>
 </template>
 
