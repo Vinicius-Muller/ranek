@@ -40,7 +40,7 @@ export default {
   methods: {
     handleSell() {
       this.$store.dispatch("pushTransation", this.buy)
-      this.$router.push({name: "UserBuys"})
+      this.$router.push('/user/buys')
      },
     
     async createNewUser() {

@@ -54,8 +54,7 @@ export default new Vuex.Store({
       }
     ],
 
-    transation: [],
-    newProducts:[]
+    transation: []
 
   },
   mutations: {
@@ -74,12 +73,6 @@ export default new Vuex.Store({
     },
     PUSH_TRANSATION(state, payload) {
       state.transation.push(payload)
-    },
-    REGISTER_PRODUCTS(state, payload) {
-      state.newProducts.push(payload)
-    },
-    DELETE_NEWPRODUCTS(state, payload) {
-      state.newProducts.splice(payload,1)
     }
   },
   actions: {
@@ -108,16 +101,10 @@ export default new Vuex.Store({
     context.commit("UPDATE_LOGIN", false)
     },
     getProducts(context) {
-       return context.products
+       context.products
     },
     pushTransation(context, payload) {
       context.commit('PUSH_TRANSATION', payload)
-    },
-    registerProducts(context, payload) {
-      context.commit('REGISTER_PRODUCTS', payload)
-    },
-    deleteNewProducts(context, payload) {
-      context.commit('DELETE_NEWPRODUCTS', payload)
     }
   },
   modules: {

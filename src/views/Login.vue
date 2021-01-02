@@ -2,28 +2,6 @@
 
   <section class="login">
 
-    <h1>Login</h1>
-
-    <form>
-
-      <label for="email">Email</label>
-
-      <input type="email" name="email" id="email" v-model="login.email">
-
-      <label for="password">Email</label>
-
-      <input type="password" name="password" id="password" v-model="login.password">
-
-      <button class="btn" @click.prevent="log">Logar</button>
-
-    </form>
-
-    <p class="password-loss">
-      
-      <a href="/" target="_blank">Perdeu a senha? Click aqui.</a>
-
-    </p>
-
     <NewLogin />
 
   </section>
