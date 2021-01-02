@@ -77,6 +77,9 @@ export default new Vuex.Store({
     },
     REGISTER_PRODUCTS(state, payload) {
       state.newProducts.push(payload)
+    },
+    DELETE_NEWPRODUCTS(state, payload) {
+      state.newProducts.splice(payload,1)
     }
   },
   actions: {
@@ -112,6 +115,9 @@ export default new Vuex.Store({
     },
     registerProducts(context, payload) {
       context.commit('REGISTER_PRODUCTS', payload)
+    },
+    deleteNewProducts(context, payload) {
+      context.commit('DELETE_NEWPRODUCTS', payload)
     }
   },
   modules: {

@@ -5,14 +5,13 @@
     <AddProducts />
 
     <h2>Lista de Produtos</h2>
-    {{newProducts}}
-    <transition-group v-if="products" name="list" tag="ul">
-        
-          <button class="delete" @click="deleteProducts(product.id, product.name)">Deletar</button>
-      
-
-    </transition-group>
-
+      <div class="new-box" v-for="(newProduct, index) in newProducts" :key="index">
+        <img class="new-img" :src="`${newProduct.img}`" :alt="newProduct.name">
+        <h3 class="new-name">{{newProduct.name}}</h3>
+        <p class="new-price">Preço {{newProduct.price | numberTranslation}}</p>
+        <p class="new-description">{{newProduct.description}}</p> 
+        <button class="delete" @click="deleteProducts(index,newProduct.name )">Deletar</button>
+      </div>
   </section>
 </template>
 
@@ -32,13 +31,13 @@ export default {
   },
 
   methods: {
-    ...mapActions(["getProducts"]),
+    ...mapActions(["getProducts", "deleteNewProducts"]),
     
-    deleteProducts(id, name) {
-      const confirm = window.confirm(`Deseja deletar esse produto  ${name}?`)
+    deleteProducts(index,name) {
+     const confirm = window.confirm(`deseja deletar o ${name}`)
 
       if(confirm) {
-        this.products.splice(id)
+        this.deleteNewProducts(index)
       }
     }
   },
@@ -61,19 +60,34 @@ export default {
 
 h2 {
   margin-bottom: 20px;
+  color: #87f;
 }
 
-.list-enter,
-.list-leave-to {
-  opacity: 0;
-  transform: translate3d(20px, 0, 0);
+.new-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  min-height: 70vh;
+  position: relative;
+}
+.new-box .new-name {
+  font-size: 1.7rem;
+  color: #87f;
+  margin: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.3s;
+.new-box .new-price {
+  font-size: 1.3rem;
+  padding-bottom: 10px;
 }
 
+.new-box .new-description {
+  font-size:1.1rem;
+}
 .delete {
   position:absolute;
   top:0px;

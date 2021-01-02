@@ -7,13 +7,13 @@
     <label for="price">Preço (R$)</label>
     <input id="price" name="price" type="number" v-model="price">
 
-    <label for="images">Fotos</label>
-    <input id="images" name="images" type="file" ref="images">
+    <label for="images">URL da foto do produto</label>
+    <input type="text" id="images" name="images" v-model="img">
 
     <label for="description">Descrição</label>
     <textarea id="description" name="description" v-model="description"></textarea>
 
-    <input class="btn" type="button" value="Adicionar Produto" @click.prevent="handleNewProduct({name,price,description})">
+    <input class="btn" type="button" value="Adicionar Produto" @click.prevent="handleNewProduct({name,price,img,description})">
 
   </form>
 </template>
@@ -25,6 +25,7 @@ export default {
   data() {
     return {
         name: "",
+        img:"",
         price: "",
         description: "",
         soldOut: "false"
@@ -32,8 +33,8 @@ export default {
   },
   methods: {
 
-    handleNewProduct(name,price,description) {
-      this.$store.dispatch("registerProducts", name,price,description)
+    handleNewProduct(name,price,img,description) {
+      this.$store.dispatch("registerProducts", name,price,img,description)
     },
 
     formatProducts() {
