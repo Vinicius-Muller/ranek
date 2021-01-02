@@ -17,7 +17,7 @@ export default {
     updateUserForm() {
         this.$store.dispatch("getUsers");
 
-        this.$router.push("/user/edits"); 
+        this.$router.push("/user"); 
 
     }
   }
